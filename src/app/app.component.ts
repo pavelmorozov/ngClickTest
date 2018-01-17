@@ -24,10 +24,25 @@ export class AppComponent {
   @HostListener('document:touchstart', ['$event'])
   onTouchStart(ev) {
     console.log("HostListener document:touchstart");
+    /*
+    * Long operation not
+    * prevent other 
+    * event listeners calls
+    */
+    var n:number = 1; 
+    var limit:number = 100000
+    while(n < limit) { 
+       n++;
+       var m:number = 1;
+       while (m<limit){
+         m++
+       }
+    }
+
   }
 
   @HostListener('document:touchend', ['$event'])
   onTouchEnd(ev) {
     console.log("HostListener document:touchend");
-  }  
+  }
 }
